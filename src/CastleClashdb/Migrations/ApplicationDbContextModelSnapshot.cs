@@ -13,12 +13,13 @@ namespace CastleClashdb.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.1")
+                .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("CastleClashdb.Models.ApplicationUser", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
 
@@ -75,8 +76,6 @@ namespace CastleClashdb.Migrations
 
                     b.HasIndex("HeroId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("AlterHeroes");
                 });
 
@@ -97,7 +96,7 @@ namespace CastleClashdb.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("CategoryId");
+                    b.Property<int>("CategoryId");
 
                     b.Property<string>("Name");
 
@@ -126,7 +125,8 @@ namespace CastleClashdb.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -211,8 +211,6 @@ namespace CastleClashdb.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("AspNetUserRoles");
                 });
 
@@ -234,7 +232,7 @@ namespace CastleClashdb.Migrations
             modelBuilder.Entity("CastleClashdb.Models.CastleClash.AlterHeroes", b =>
                 {
                     b.HasOne("CastleClashdb.Models.CastleClash.Hero", "hero")
-                        .WithMany("AlterHeroes")
+                        .WithMany()
                         .HasForeignKey("HeroId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -246,9 +244,10 @@ namespace CastleClashdb.Migrations
 
             modelBuilder.Entity("CastleClashdb.Models.CastleClash.Hero", b =>
                 {
-                    b.HasOne("CastleClashdb.Models.CastleClash.Category")
+                    b.HasOne("CastleClashdb.Models.CastleClash.Category", "Category")
                         .WithMany("Hero")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

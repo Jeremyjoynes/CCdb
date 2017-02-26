@@ -12,6 +12,6 @@ namespace CastleClashdb.Models.CastleClash
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public ICollection<Hero> Hero { get; set; }
+        public virtual ICollection<Hero> Hero { get; set; }
     }
 }

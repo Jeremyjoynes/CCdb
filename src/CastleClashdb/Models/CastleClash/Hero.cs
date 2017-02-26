@@ -13,8 +13,9 @@ namespace CastleClashdb.Models.CastleClash
         public string Name { get; set; }
         public int level { get; set; }
 
-      //public virtual Category CategoryId { get; set; }
-      public ICollection<AlterHeroes> AlterHeroes { get; set; }
-       
+      public int  CategoryId { get; set; }
+      public Category Category { get; set; }
+                                           //public ICollection<AlterHeroes> AlterHeroes { get; set; }
+
     }
 }

@@ -49,12 +49,13 @@ namespace CastleClashdb
                 .AddDefaultTokenProviders();
 
             //add security policies
-            services.AddAuthorization(options => {
+            services.AddAuthorization(options =>
+            {
                 options.AddPolicy("AdminOnly", policy => policy.RequireClaim("IsAdmin"));
             });
 
 
-            services.Configure<IdentityOptions>(options => 
+            services.Configure<IdentityOptions>(options =>
             {
                 // Password requirements
                 options.Password.RequireDigit = true;
@@ -81,7 +82,8 @@ namespace CastleClashdb
 
             });
 
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options =>
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             // Add application services.
             services.AddTransient<IGenericRepository, GenericRepository>();

@@ -13,7 +13,7 @@ using CastleClashdb.Models.AccountViewModels;
 using CastleClashdb.Services;
 using CastleClashdb.Controllers;
 
-namespace AuthDemo.Controllers
+namespace CastleClashdb.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
