@@ -1,0 +1,72 @@
+﻿<h1>This is the homepage</h1>
+<div class="container">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Name: </th>
+                <th>Level: </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hero in vm.heroes">
+                <td>{{hero.name}}</td>
+                <td>{{hero.level}}</td>
+                <td>
+                    <button ng-if="vm.canEdit()" class="btn btn-primary" ng-click="vm.editHero(hero)">Edit</button>
+                    <button ng-if="vm.canDelete()" class="btn btn-danger" ng-click="vm.deleteHero(hero.id)">Delete</button>
+                </td>
+
+            </tr>
+        </tbody>
+
+    </table>
+    <h3>Add Hero</h3>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="hero">Hero Name:</label>
+            <input type="text" ng-model="vm.newHero.name" class="form-control" placeholder="Hero Name" id="hero" />
+        </div>
+
+        <div class="form-group">
+            <label for="lvl">Hero Level:</label>
+             <input type="number" ng-model="vm.newHero.level" class="form-control" placeholder="Hero level" id="lvl" />
+        </div>
+        <div class="form-group">
+            <label for="cat">Category:</label>
+            
+             <!--<select  class="form-control" id="cat" ng-model="vm.newHero.category" ng-options="category.name for category in vm.categories"> </select>-->
+                 <!--<select ng-model="vm.categoryIdToSave" ng-options="category.id as category.name for category in vm.categories"></select>-->
+            <select ng-model="vm.newHero.categoryId">
+                <option ng-repeat="category in vm.categories" value="{{category.id}}">{{category.name}}</option>
+            </select>
+             
+
+
+        </div>
+        <button class="btn btn-default" id="addh" ng-click="vm.saveHero()">Add Hero</button>
+    </form>
+
+    <h3>One to many relationship</h3>
+    <ul ng-repeat="category in vm.categories">
+        <li>
+            {{category.name}}
+            <ul>
+                <li ng-repeat="hero in category.hero">
+                    {{hero.name}}, Level: {{hero.level}}
+                </li>
+            </ul>
+
+        </li>
+    </ul>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+
+<!--<h3> Many to Many relationship</h3>-->

@@ -1,0 +1,18 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+    <h4 class="modal-title">Edit Hero</h4>
+</div>
+<div class="modal-body">
+
+    <div class="form-group">
+       Name: <input type="text" placeholder="Hero name" ng-model="vm.hero.name"/>
+        Level: <input  type="number" placeholder="Level" ng-model="vm.hero.level"/>
+
+    </div>
+</div>
+
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="vm.cancel()">Close</button>
+    <button type="button" class="btn btn-primary" ng-click="vm.save()">Save Hero</button>
+</div>

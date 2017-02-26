@@ -1,0 +1,43 @@
+﻿<h1>this is the register page</h1>
+<form class="form-horizontal" ng-submit="vm.registerUser()" name="registrationForm" novalidate>
+    <h4>Create a new account.</h4>
+    <hr />
+
+    <div class="form-group">
+        <label for="regemail" class="col-md-2 control-label">Email</label>
+        <div class="col-md-10">
+            <input id="regemail" name="email" type="email" class="form-control" ng-model="vm.formData.email" ng-required="true" />
+            <span class="text-danger"
+                  ng-show="registrationForm.email.$touched && registrationForm.email.$error.required">An email is required.</span>
+            <span class="text-danger" ng-show="registrationForm.email.$invalid && !registrationForm.email.$pristine">
+                The email provided is not a valid email.
+            </span>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="regpassword" class="col-md-2 control-label">Password</label>
+        <div class="col-md-10">
+            <input id="regpassword" name="password" class="form-control" type="password" ng-model="vm.formData.password" ng-pattern="vm.pattern" ng-required="true" />
+            <label class="text-danger" ng-show="registrationForm.password && !registrationForm.password.$error.required">A password is required</label>
+            <!--<span class="text-danger" ng-show="registrationForm.password && !registrationForm.password.$error.pattern">The password is too short</span>
+            <span class="text-danger" ng-show="registrationForm.$error && !registrationForm.password.$error.pattern">The Password must contain an Uppercase letter</span>
+            <span class="text-danger" ng-show="registrationForm.$error && !registrationForm.password.$error.pattern">The Password must contain an lowercase letter</span>
+            <span class="text-danger" ng-show="registrationForm.$error">The password must contain a number</span>-->
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="regconfirmpassword" class="col-md-2 control-label">Confirm Password</label>
+        <div class="col-md-10">
+            <input id="regconfirmpassword" name="confirmPassword" class="form-control" type="password" ng-model="vm.formData.confirmPassword" ng-required="true" />
+            <span class="text-danger" ng-show="registrationForm.confirmPassword.$touched && registrationForm.confirmPassword.$error.required">Confirmation email is required</span>
+           
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-default">Register</button>
+        </div>
+    </div>
+</form>
